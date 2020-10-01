@@ -7,7 +7,6 @@ import App from './App';
 ReactDOM.render(
   <Router>
     <App>
-      <Route key="index" exact path="/" component={DashboardPage} />
       <Route key="explore" path="/explore" component={ExplorePage} />
     </App>
   </Router>, // eslint-disable-next-line no-undef

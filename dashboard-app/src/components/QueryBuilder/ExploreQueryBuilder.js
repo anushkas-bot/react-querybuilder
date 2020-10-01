@@ -13,11 +13,9 @@ import SelectChartType from './SelectChartType';
 import OrderGroup from './Order/OrderGroup';
 import Pivot from './Pivot/Pivot';
 import { useState } from 'react';
-import { toPairs } from 'ramda';
-import chartsExamples from './bizChartExamples';
 import 'antd/dist/antd.css';
-import './style.css';
 import Icon from '@ant-design/icons';
+
 //import App from './App';
 
 const ControlsRow = styled(Row)`
@@ -49,11 +47,6 @@ const ChartRow = styled(Row)`
   padding-right: 28px;
 `
 
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
-
-const { Header, Footer, Sider, Content } = Layout;
-
 export default function ExploreQueryBuilder({
   vizState,
   cubejsApi,
@@ -61,22 +54,7 @@ export default function ExploreQueryBuilder({
   chartExtra,
 })
  {
-  const [activeChart, setactiveChart] = useState('basic');
-  const [chartLibrary, setchartLibrary] = useState('bizcharts');
 
-  const handleMenuChange = e => {
-      setactiveChart(e.key);
-   }
-
-   const handleChartLibraryChange = e => {
-      setchartLibrary(e.target.value);
-  }
-
-  const renderGroup = group => {
-    return toPairs(chartsExamples).filter(([n, c]) => c.group === group).map(([name, c]) =>
-      (<div key={name} style={{ marginBottom: 24 }}>{c.render({ setchartLibrary: chartLibrary })}</div>)
-    );
-  }
   return (
     <QueryBuilder
     vizState={vizState}
@@ -102,7 +80,8 @@ export default function ExploreQueryBuilder({
       chartType,
       updateChartType,
       validatedQuery,
-      cubejsApi
+      cubejsApi,
+      resultSet,
     }) => [
       <ControlsRow type="flex" justify="space-around" align="top" key="1">
         <Col span={24}>
@@ -155,7 +134,7 @@ export default function ExploreQueryBuilder({
         </Col>
       </ControlsRow>,
       <ChartRow type="flex" justify="space-around" align="top" gutter={24} key="2">
-        <Col span={24}>
+       <Col span={24}>
           {isQueryPresent ? ([
             <Row style={{ marginTop: 15, marginBottom: 25 }}>
               <SelectChartType
@@ -168,11 +147,14 @@ export default function ExploreQueryBuilder({
                 vizState={{ query: validatedQuery, chartType }}
                 cubejsApi={cubejsApi}
               />
-              <Layout>
-                <Content style={{ padding: '30px', margin: '30px', background: '#fff' }}>
+            </ChartCard>,
+            /*<ChartCard style={{ minHeight: 420 }}>
                   { renderGroup(activeChart) }
-                </Content>
-              </Layout>
+            </ChartCard>,*/
+            <ChartCard style={{ minHeight: 420 }}>
+                <pre>
+                  <code>{JSON.stringify(validatedQuery, null, 4)}</code>
+                </pre>
             </ChartCard>
           ]) : (
             <h2

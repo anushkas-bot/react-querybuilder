@@ -24,7 +24,7 @@ const Header = ({ location }) => (
           lineHeight: '54px',
         }}
       >
-        My Dashboard
+
       </h2>
     </div>
     <Menu
@@ -39,7 +39,7 @@ const Header = ({ location }) => (
         <Link to="/explore">Explore</Link>
       </Menu.Item>
       <Menu.Item key="/">
-        <Link to="/">Dashboard</Link>
+        <Link to="/"></Link>
       </Menu.Item>
     </Menu>
   </Layout.Header>

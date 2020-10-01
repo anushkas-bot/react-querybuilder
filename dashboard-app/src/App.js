@@ -10,7 +10,7 @@ import client from './graphql/client';
 import Header from './components/Header';
 const API_URL = 'http://localhost:4000';
 const CUBEJS_TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDA5MjM4NjAsImV4cCI6MTYwMTAxMDI2MH0.QqNOZkEQCQCpwfERL9wxB6yZmo1FHOktfOWR0RlcE7Y';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiYXBwSWQiOiIxIiwiaWF0IjoxNjAxMzAyNjIxLCJleHAiOjE2MDEzODkwMjF9.oepE0FWWgl-C6PRvwenpDOz5wcvC9H9q2BVFRPOSZL8';
 const cubejsApi = cubejs(CUBEJS_TOKEN, {
   apiUrl: `${API_URL}/cubejs-api/v1`,
 });

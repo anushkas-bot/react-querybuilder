@@ -19,6 +19,7 @@ import {
   LineChart,
   Line,
 } from 'recharts';
+import { sql } from '@cubejs-client/core';
 
 const CartesianChart = ({ resultSet, children, ChartComponent }) => (
   <ResponsiveContainer width="100%" height={350}>
