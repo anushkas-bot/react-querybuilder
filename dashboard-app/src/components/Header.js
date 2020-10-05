@@ -36,7 +36,7 @@ const Header = ({ location }) => (
       }}
     >
       <Menu.Item key="/explore">
-        <Link to="/explore">Explore</Link>
+        <Link to="/explore">QueryBuilder</Link>
       </Menu.Item>
       <Menu.Item key="/">
         <Link to="/"></Link>

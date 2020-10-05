@@ -58,7 +58,7 @@ const TitleModal = ({
       onCancel={() => setTitleModalVisible(false)}
     >
       <Input
-        placeholder="Dashboard Item Name"
+        placeholder="{JSON.stringify(validatedQuery, null, 2)}"
         value={finalTitle}
         onChange={(e) => setTitle(e.target.value)}
       />

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
-import { Row, Col, Divider, Card, Popover, Button, Layout, Menu, Radio, Spin, Select } from 'antd';
+import { Row, Col, Divider, Card, Popover, Button, Layout, Menu, Radio, Spin, Select, Modal, Space } from 'antd';
 import { SortAscendingOutlined, BorderInnerOutlined } from '@ant-design/icons';
 import { QueryBuilder } from '@cubejs-client/react';
 import ChartRenderer from '../ChartRenderer';
@@ -15,8 +15,7 @@ import Pivot from './Pivot/Pivot';
 import { useState } from 'react';
 import 'antd/dist/antd.css';
 import Icon from '@ant-design/icons';
-
-//import App from './App';
+import { sql } from '@cubejs-client/core'
 
 const ControlsRow = styled(Row)`
   background: #ffffff;
@@ -29,6 +28,13 @@ const StyledDivider = styled(Divider)`
   height: 4.5em;
   top: 0.5em;
   background: #F4F5F6;
+`
+
+const StyledDividerr = styled(Divider)`
+  margin: 0 12px;
+  height: 4.5em;
+  top: 0.5em;
+  background: #ffffff;
 `
 
 const HorizontalDivider = styled(Divider)`
@@ -54,13 +60,28 @@ export default function ExploreQueryBuilder({
   chartExtra,
 })
  {
+   const [visible, setVisible] = useState(false);
 
+   const showModal = () => {
+            setVisible(true);
+                        }
+
+    const handleOK = e => {
+          console.log(e);
+        setVisible(false);
+                       }
+
+    const handleCancel = e => {
+            console.log(e);
+            setVisible(false);
+                       };
   return (
     <QueryBuilder
     vizState={vizState}
     setVizState={setVizState}
     cubejsApi={cubejsApi}
     wrapWithQueryRenderer={false}
+    sql = {sql}
     render={({
       measures,
       availableMeasures,
@@ -81,7 +102,7 @@ export default function ExploreQueryBuilder({
       updateChartType,
       validatedQuery,
       cubejsApi,
-      resultSet,
+      resultSet
     }) => [
       <ControlsRow type="flex" justify="space-around" align="top" key="1">
         <Col span={24}>
@@ -143,18 +164,27 @@ export default function ExploreQueryBuilder({
               />
             </Row>,
             <ChartCard style={{ minHeight: 420 }}>
+              <Button style={{float: 'right'}} type="primary" onClick={showModal}>
+                JSONQuery
+              </Button>
+              <Modal
+                visible={visible}
+                onOk={handleOK}
+                onCancel={handleCancel}
+              >
+                <p>
+                  <div>
+                   <pre>
+                    <code>{JSON.stringify(validatedQuery, null, 2)}</code>
+                   </pre>
+                  </div>
+               </p>
+              </Modal>
+              <StyledDividerr type="vertical"/>
               <ChartRenderer
                 vizState={{ query: validatedQuery, chartType }}
                 cubejsApi={cubejsApi}
               />
-            </ChartCard>,
-            /*<ChartCard style={{ minHeight: 420 }}>
-                  { renderGroup(activeChart) }
-            </ChartCard>,*/
-            <ChartCard style={{ minHeight: 420 }}>
-                <pre>
-                  <code>{JSON.stringify(validatedQuery, null, 4)}</code>
-                </pre>
             </ChartCard>
           ]) : (
             <h2
