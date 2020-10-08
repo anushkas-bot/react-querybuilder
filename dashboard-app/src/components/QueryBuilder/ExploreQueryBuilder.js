@@ -61,6 +61,7 @@ export default function ExploreQueryBuilder({
 })
  {
    const [visible, setVisible] = useState(false);
+   const [visiblee, setVisiblee] = useState(false);
 
    const showModal = () => {
             setVisible(true);
@@ -75,13 +76,25 @@ export default function ExploreQueryBuilder({
             console.log(e);
             setVisible(false);
                        };
+    const showModall = () => {
+             setVisiblee(true)
+                        };
+
+    const handleOKK = e => {
+            console.log(e);
+            setVisiblee(false);
+                          }
+
+    const handleCancell = e => {
+              console.log(e);
+              setVisiblee(false);
+                          };
   return (
     <QueryBuilder
     vizState={vizState}
     setVizState={setVizState}
     cubejsApi={cubejsApi}
     wrapWithQueryRenderer={false}
-    sql = {sql}
     render={({
       measures,
       availableMeasures,
@@ -177,6 +190,21 @@ export default function ExploreQueryBuilder({
                    <pre>
                     <code>{JSON.stringify(validatedQuery, null, 2)}</code>
                    </pre>
+                  </div>
+               </p>
+              </Modal>
+              <StyledDividerr type="vertical"/>
+              <Button style={{float: 'right'}} type="primary" onClick={showModall}>
+                SQLQuery
+              </Button>
+              <Modal
+                visible={visiblee}
+                onOk={handleOKK}
+                onCancel={handleCancell}
+              >
+                <p>
+                  <div>
+                    <p><u>http://localhost:4000/cubejs-api/v1/sql?query={JSON.stringify(validatedQuery, null, 2)}</u></p>
                   </div>
                </p>
               </Modal>
