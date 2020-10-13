@@ -241,6 +241,19 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
   const sqlResponse = sqlFormatter.format(response);
   const cacheQuery = sqlFormatter.format(cacheResponse);
   return <div>
+              <Button style={{float: 'right'}} type="primary" onClick={showCache}>
+                CacheQuery
+              </Button>
+              <Modal
+                visible={cacheVisible}
+                onOk={handleCache}
+                onCancel={handleCacheQuery}
+                width={580}
+              >
+              <p>
+                  <p><JSONPretty id="json-pretty" data={cacheQuery}></JSONPretty></p>
+              </p>
+              </Modal>
               <Button style={{float: 'right'}} type="primary" onClick={showModal}>
                 JSONQuery
               </Button>
@@ -254,7 +267,7 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
                    <p><JSONPretty id="json-pretty" data={responsee}></JSONPretty></p>
                  </div>
                </p>
-              </Modal>
+              </Modal>              
               <Button style={{float: 'right'}} type="primary" onClick={showModall}>
                 SQLQuery
               </Button>
@@ -265,19 +278,6 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
               >
               <p>
                   <p><JSONPretty id="json-pretty" data={sqlResponse}></JSONPretty></p>
-              </p>
-              </Modal>
-              <Button style={{float: 'right'}} type="primary" onClick={showCache}>
-                CacheQuery
-              </Button>
-              <Modal
-                visible={cacheVisible}
-                onOk={handleCache}
-                onCancel={handleCacheQuery}
-                width={580}
-              >
-              <p>
-                  <p><JSONPretty id="json-pretty" data={cacheQuery}></JSONPretty></p>
               </p>
               </Modal>
               <StyledDividerr type="vertical"/>
