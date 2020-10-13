@@ -4,6 +4,7 @@ import { HashRouter as Router, Route } from 'react-router-dom';
 import ExplorePage from './pages/ExplorePage';
 import DashboardPage from './pages/DashboardPage';
 import App from './App';
+//import "./index.less";
 ReactDOM.render(
   <Router>
     <App>

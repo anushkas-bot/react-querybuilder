@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const PlusIconStyled = styled(Icon)`
   display: inline-block;
-  background: #6F76D9;
+  background: #7a76b5;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -21,7 +21,7 @@ const PlusIconStyled = styled(Icon)`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(122,119,255,0.1);
+    background: rgba(122, 118, 181, 0.1);
     border-radius: 50%;
     transition: transform 0.15s cubic-bezier(0.0, 0.0, 0.2, 1);
     z-index: 1;

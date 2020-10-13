@@ -16,6 +16,7 @@ import { useState } from 'react';
 import 'antd/dist/antd.css';
 import Icon from '@ant-design/icons';
 import { sql } from '@cubejs-client/core'
+import {  useEffect } from 'react';
 
 const ControlsRow = styled(Row)`
   background: #ffffff;
@@ -89,12 +90,26 @@ export default function ExploreQueryBuilder({
               console.log(e);
               setVisiblee(false);
                           };
+
+
+    let ur = encodeURIComponent(JSON.stringify(vizState.query));
+                                      //let url = 'http://localhost:4000/cubejs-api/v1/sql?query=' + encodeURIComponent(JSON.stringify(vizState.query));
+                                                        // GET request using fetch inside useEffect React hook
+    let u = "http://localhost:4000/cubejs-api/v1/sql?query=" + ur;
+    console.log(u)
+    /*useEffect(() => {
+          if(u !=="http://localhost:4000/cubejs-api/v1/sql?query=%7B%7D") {
+            fetch(u)
+                  .then(response => response.json())
+                  .then(data => console.log(JSON.stringify(data, null, 4))); }
+                },[]);*/
   return (
     <QueryBuilder
     vizState={vizState}
     setVizState={setVizState}
     cubejsApi={cubejsApi}
     wrapWithQueryRenderer={false}
+    u={u}
     render={({
       measures,
       availableMeasures,
@@ -115,7 +130,8 @@ export default function ExploreQueryBuilder({
       updateChartType,
       validatedQuery,
       cubejsApi,
-      resultSet
+      resultSet,
+      u
     }) => [
       <ControlsRow type="flex" justify="space-around" align="top" key="1">
         <Col span={24}>
@@ -177,38 +193,6 @@ export default function ExploreQueryBuilder({
               />
             </Row>,
             <ChartCard style={{ minHeight: 420 }}>
-              <Button style={{float: 'right'}} type="primary" onClick={showModal}>
-                JSONQuery
-              </Button>
-              <Modal
-                visible={visible}
-                onOk={handleOK}
-                onCancel={handleCancel}
-              >
-                <p>
-                  <div>
-                   <pre>
-                    <code>{JSON.stringify(validatedQuery, null, 2)}</code>
-                   </pre>
-                  </div>
-               </p>
-              </Modal>
-              <StyledDividerr type="vertical"/>
-              <Button style={{float: 'right'}} type="primary" onClick={showModall}>
-                SQLQuery
-              </Button>
-              <Modal
-                visible={visiblee}
-                onOk={handleOKK}
-                onCancel={handleCancell}
-              >
-                <p>
-                  <div>
-                    <p><u>http://localhost:4000/cubejs-api/v1/sql?query={JSON.stringify(validatedQuery, null, 2)}</u></p>
-                  </div>
-               </p>
-              </Modal>
-              <StyledDividerr type="vertical"/>
               <ChartRenderer
                 vizState={{ query: validatedQuery, chartType }}
                 cubejsApi={cubejsApi}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useCubeQuery } from '@cubejs-client/react';
-import { Spin, Row, Col, Statistic, Table } from 'antd';
+import { Spin, Row, Col, Statistic, Table, Divider, Modal, Button } from 'antd';
 import {
   CartesianGrid,
   PieChart,
@@ -20,6 +20,10 @@ import {
   Line,
 } from 'recharts';
 import { sql } from '@cubejs-client/core';
+import JSONPretty from 'react-json-pretty';
+import styled from 'styled-components';
+import {useState, useEffect} from 'react';
+import sqlFormatter from "sql-formatter";
 
 const CartesianChart = ({ resultSet, children, ChartComponent }) => (
   <ResponsiveContainer width="100%" height={350}>
@@ -140,11 +144,145 @@ const renderChart = (Component) => ({ resultSet, error, pivotConfig }) =>
   )) ||
   (error && error.toString()) || <Spin />;
 
-const ChartRenderer = ({ vizState }) => {
+const ChartRenderer = ({ vizState, validatedQuery }) => {
+
+  const StyledDividerr = styled(Divider)`
+    margin: 0 12px;
+    height: 4.5em;
+    top: 0.5em;
+    background: #ffffff;
+`
+  const StyledModal = styled(Modal)`
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    overflow-y: hidden; //
+    overflow-x: hidden;
+  `
+  const [visible, setVisible] = useState(false);
+  const [visiblee, setVisiblee] = useState(false);
+  const [cacheVisible, setcacheVisible] = useState(false);
+  const showModal = () => {
+        setVisible(true);
+                    }
+
+  const handleOK = e => {
+      console.log(e);
+    setVisible(false);
+                   }
+
+  const handleCancel = e => {
+        console.log(e);
+        setVisible(false);
+                   };
+
+  const showModall = () => {
+         setVisiblee(true)
+                         };
+
+  const handleOKK = e => {
+          console.log(e);
+          setVisiblee(false);
+                       }
+
+  const handleCancell = e => {
+              console.log(e);
+              setVisiblee(false);
+                           };
+
+  const showCache = () => {
+              setcacheVisible(true)
+                          };
+
+   const handleCache = e => {
+              console.log(e);
+              setcacheVisible(false);
+                            }
+
+    const handleCacheQuery = e => {
+                console.log(e);
+                setcacheVisible(false);
+                            };
+
+  const [response, setResponse] = useState({});
+  const [responsee, setResponsee] = useState({});
+  const [cacheResponse, setcacheResponse] = useState({});
+  let ur = encodeURIComponent(JSON.stringify(vizState.query));
+  let u = "http://localhost:4000/cubejs-api/v1/sql?query=" + ur;
+  let us = "http://localhost:4000/cubejs-api/v1/load?query=" + ur;
+  useEffect(() => {
+    if(u !=="http://localhost:4000/cubejs-api/v1/sql?query=undefined") {
+        fetch(u)
+            .then(response => (response.json()))
+            .then(data => setResponse(current => data?.sql?.sql[0] || current))
+    }},[u]);
+
+  useEffect(() => {
+    if(us !=="http://localhost:4000/cubejs-api/v1/load?query=undefined") {
+        fetch(us)
+            .then(responsee => (responsee.json()))
+            .then(data => {
+
+                setResponsee(data['query'])
+
+            })
+      }},[us]);
+
+  useEffect(() => {
+            if(u !=="http://localhost:4000/cubejs-api/v1/sql?query=undefined") {
+                fetch(u)
+                    .then(cacheResponse => (cacheResponse.json()))
+                    .then(data => setcacheResponse(current => data?.sql?.cacheKeyQueries.queries[0][0] || current))
+            }},[u]);
+
   const { query, chartType, pivotConfig } = vizState;
   const component = TypeToMemoChartComponent[chartType];
   const renderProps = useCubeQuery(query);
-  return component && renderChart(component)({ ...renderProps, pivotConfig });
+  const sqlResponse = sqlFormatter.format(response);
+  const cacheQuery = sqlFormatter.format(cacheResponse);
+  return <div>
+              <Button style={{float: 'right'}} type="primary" onClick={showModal}>
+                JSONQuery
+              </Button>
+              <Modal
+                visible={visible}
+                onOk={handleOK}
+                onCancel={handleCancel}
+              >
+               <p>
+                 <div>
+                   <p><JSONPretty id="json-pretty" data={responsee}></JSONPretty></p>
+                 </div>
+               </p>
+              </Modal>
+              <Button style={{float: 'right'}} type="primary" onClick={showModall}>
+                SQLQuery
+              </Button>
+              <Modal
+                visible={visiblee}
+                onOk={handleOKK}
+                onCancel={handleCancell}
+              >
+              <p>
+                  <p><JSONPretty id="json-pretty" data={sqlResponse}></JSONPretty></p>
+              </p>
+              </Modal>
+              <Button style={{float: 'right'}} type="primary" onClick={showCache}>
+                CacheQuery
+              </Button>
+              <Modal
+                visible={cacheVisible}
+                onOk={handleCache}
+                onCancel={handleCacheQuery}
+                width={580}
+              >
+              <p>
+                  <p><JSONPretty id="json-pretty" data={cacheQuery}></JSONPretty></p>
+              </p>
+              </Modal>
+              <StyledDividerr type="vertical"/>
+              {renderChart(component)({ ...renderProps, pivotConfig })}
+          </div>;
 };
 
 ChartRenderer.propTypes = {
