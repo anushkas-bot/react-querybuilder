@@ -242,7 +242,7 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
   const cacheQuery = sqlFormatter.format(cacheResponse);
   return <div>
               <Button style={{float: 'right'}} type="primary" onClick={showCache}>
-                CacheQuery
+                Cache
               </Button>
               <Modal
                 visible={cacheVisible}
@@ -267,9 +267,9 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
                    <p><JSONPretty id="json-pretty" data={responsee}></JSONPretty></p>
                  </div>
                </p>
-              </Modal>              
+              </Modal>
               <Button style={{float: 'right'}} type="primary" onClick={showModall}>
-                SQLQuery
+                SQL
               </Button>
               <Modal
                 visible={visiblee}
