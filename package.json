@@ -8,5 +8,9 @@
   "dependencies": {
     "@cubejs-backend/postgres-driver": "^0.20.9",
     "@cubejs-backend/server": "^0.20.10"
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5"
   }
 }

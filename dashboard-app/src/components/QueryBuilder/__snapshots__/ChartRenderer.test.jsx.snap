@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <button
+    class="ant-btn ant-btn-primary"
+    style="float:right"
+    type="button"
+  >
+    <span>
+      Cache
+    </span>
+  </button>
+  <button
+    class="ant-btn ant-btn-primary"
+    style="float:right"
+    type="button"
+  >
+    <span>
+      JSONQuery
+    </span>
+  </button>
+  <button
+    class="ant-btn ant-btn-primary"
+    style="float:right"
+    type="button"
+  >
+    <span>
+      SQL
+    </span>
+  </button>
+  <div
+    class="ant-divider ant-divider-vertical sc-bdnylx dbTroa"
+    role="separator"
+  />
+  <div
+    class="ant-spin ant-spin-spinning"
+  >
+    <span
+      class="ant-spin-dot ant-spin-dot-spin"
+    >
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+      <i
+        class="ant-spin-dot-item"
+      />
+    </span>
+  </div>
+</div>
+`;

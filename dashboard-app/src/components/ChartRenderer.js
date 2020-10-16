@@ -181,12 +181,10 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
                          };
 
   const handleOKK = e => {
-          console.log(e);
           setVisiblee(false);
                        }
 
   const handleCancell = e => {
-              console.log(e);
               setVisiblee(false);
                            };
 
@@ -195,12 +193,10 @@ const ChartRenderer = ({ vizState, validatedQuery }) => {
                           };
 
    const handleCache = e => {
-              console.log(e);
               setcacheVisible(false);
                             }
 
     const handleCacheQuery = e => {
-                console.log(e);
                 setcacheVisible(false);
                             };
 

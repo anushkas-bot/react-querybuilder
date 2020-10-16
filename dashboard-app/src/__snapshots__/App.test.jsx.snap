@@ -1,0 +1,311 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<CubeProvider
+  cubejsApi={
+    CubejsApi {
+      "apiToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiYXBwSWQiOiIxIiwiaWF0IjoxNjAyNzY2ODQ3LCJleHAiOjE2MDI4NTMyNDd9.UuoTMdJQSPnHF9NJfTz-NP1EYG4CS2Te2VzwNqPxG0A",
+      "apiUrl": "http://localhost:4000/cubejs-api/v1",
+      "credentials": undefined,
+      "headers": Object {},
+      "parseDateMeasures": undefined,
+      "pollInterval": 5,
+      "transport": HttpTransport {
+        "apiUrl": "http://localhost:4000/cubejs-api/v1",
+        "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyIiwiYXBwSWQiOiIxIiwiaWF0IjoxNjAyNzY2ODQ3LCJleHAiOjE2MDI4NTMyNDd9.UuoTMdJQSPnHF9NJfTz-NP1EYG4CS2Te2VzwNqPxG0A",
+        "credentials": undefined,
+        "headers": Object {},
+      },
+    }
+  }
+>
+  <ApolloProvider
+    client={
+      ApolloClient {
+        "cache": InMemoryCache {
+          "addTypename": true,
+          "cacheKeyRoot": KeyTrie {
+            "weakness": true,
+          },
+          "config": Object {
+            "addTypename": true,
+            "dataIdFromObject": [Function],
+            "fragmentMatcher": HeuristicFragmentMatcher {},
+            "freezeResults": false,
+            "resultCaching": true,
+          },
+          "data": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "maybeBroadcastWatch": [Function],
+          "optimisticData": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "silenceBroadcast": false,
+          "storeReader": StoreReader {
+            "executeSelectionSet": [Function],
+            "executeStoreQuery": [Function],
+            "executeSubSelectedArray": [Function],
+            "freezeResults": false,
+          },
+          "storeWriter": StoreWriter {},
+          "typenameDocumentCache": Map {},
+          "watches": Set {},
+        },
+        "clearStoreCallbacks": Array [],
+        "defaultOptions": Object {},
+        "disableNetworkFetches": false,
+        "link": SchemaLink {
+          "context": undefined,
+          "rootValue": undefined,
+          "schema": GraphQLSchema {
+            "__validationErrors": undefined,
+            "_directives": Array [
+              "@skip",
+              "@include",
+              "@deprecated",
+              "@specifiedBy",
+            ],
+            "_implementationsMap": Object {},
+            "_mutationType": "Mutation",
+            "_queryType": "Query",
+            "_subTypeMap": Object {},
+            "_subscriptionType": undefined,
+            "_typeMap": Object {
+              "Boolean": "Boolean",
+              "DashboardItem": "DashboardItem",
+              "DashboardItemInput": "DashboardItemInput",
+              "Mutation": "Mutation",
+              "Query": "Query",
+              "String": "String",
+              "__Directive": "__Directive",
+              "__DirectiveLocation": "__DirectiveLocation",
+              "__EnumValue": "__EnumValue",
+              "__Field": "__Field",
+              "__InputValue": "__InputValue",
+              "__Schema": "__Schema",
+              "__Type": "__Type",
+              "__TypeKind": "__TypeKind",
+            },
+            "astNode": undefined,
+            "description": undefined,
+            "extensionASTNodes": Array [],
+            "extensions": undefined,
+          },
+        },
+        "localState": LocalState {
+          "cache": InMemoryCache {
+            "addTypename": true,
+            "cacheKeyRoot": KeyTrie {
+              "weakness": true,
+            },
+            "config": Object {
+              "addTypename": true,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "freezeResults": false,
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+              "executeSubSelectedArray": [Function],
+              "freezeResults": false,
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+          "client": [Circular],
+        },
+        "mutate": [Function],
+        "query": [Function],
+        "queryDeduplication": true,
+        "queryManager": QueryManager {
+          "assumeImmutableResults": false,
+          "clientAwareness": Object {
+            "name": undefined,
+            "version": undefined,
+          },
+          "dataStore": DataStore {
+            "cache": InMemoryCache {
+              "addTypename": true,
+              "cacheKeyRoot": KeyTrie {
+                "weakness": true,
+              },
+              "config": Object {
+                "addTypename": true,
+                "dataIdFromObject": [Function],
+                "fragmentMatcher": HeuristicFragmentMatcher {},
+                "freezeResults": false,
+                "resultCaching": true,
+              },
+              "data": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "maybeBroadcastWatch": [Function],
+              "optimisticData": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "silenceBroadcast": false,
+              "storeReader": StoreReader {
+                "executeSelectionSet": [Function],
+                "executeStoreQuery": [Function],
+                "executeSubSelectedArray": [Function],
+                "freezeResults": false,
+              },
+              "storeWriter": StoreWriter {},
+              "typenameDocumentCache": Map {},
+              "watches": Set {},
+            },
+          },
+          "fetchQueryRejectFns": Map {},
+          "idCounter": 1,
+          "inFlightLinkObservables": Map {},
+          "link": SchemaLink {
+            "context": undefined,
+            "rootValue": undefined,
+            "schema": GraphQLSchema {
+              "__validationErrors": undefined,
+              "_directives": Array [
+                "@skip",
+                "@include",
+                "@deprecated",
+                "@specifiedBy",
+              ],
+              "_implementationsMap": Object {},
+              "_mutationType": "Mutation",
+              "_queryType": "Query",
+              "_subTypeMap": Object {},
+              "_subscriptionType": undefined,
+              "_typeMap": Object {
+                "Boolean": "Boolean",
+                "DashboardItem": "DashboardItem",
+                "DashboardItemInput": "DashboardItemInput",
+                "Mutation": "Mutation",
+                "Query": "Query",
+                "String": "String",
+                "__Directive": "__Directive",
+                "__DirectiveLocation": "__DirectiveLocation",
+                "__EnumValue": "__EnumValue",
+                "__Field": "__Field",
+                "__InputValue": "__InputValue",
+                "__Schema": "__Schema",
+                "__Type": "__Type",
+                "__TypeKind": "__TypeKind",
+              },
+              "astNode": undefined,
+              "description": undefined,
+              "extensionASTNodes": Array [],
+              "extensions": undefined,
+            },
+          },
+          "localState": LocalState {
+            "cache": InMemoryCache {
+              "addTypename": true,
+              "cacheKeyRoot": KeyTrie {
+                "weakness": true,
+              },
+              "config": Object {
+                "addTypename": true,
+                "dataIdFromObject": [Function],
+                "fragmentMatcher": HeuristicFragmentMatcher {},
+                "freezeResults": false,
+                "resultCaching": true,
+              },
+              "data": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "maybeBroadcastWatch": [Function],
+              "optimisticData": DepTrackingCache {
+                "data": Object {},
+                "depend": [Function],
+              },
+              "silenceBroadcast": false,
+              "storeReader": StoreReader {
+                "executeSelectionSet": [Function],
+                "executeStoreQuery": [Function],
+                "executeSubSelectedArray": [Function],
+                "freezeResults": false,
+              },
+              "storeWriter": StoreWriter {},
+              "typenameDocumentCache": Map {},
+              "watches": Set {},
+            },
+            "client": [Circular],
+          },
+          "mutationStore": MutationStore {
+            "store": Object {},
+          },
+          "onBroadcast": [Function],
+          "pollingInfoByQueryId": Map {},
+          "queries": Map {},
+          "queryDeduplication": true,
+          "queryStore": QueryStore {
+            "store": Object {},
+          },
+          "ssrMode": false,
+          "transformCache": WeakMap {},
+        },
+        "reFetchObservableQueries": [Function],
+        "resetStore": [Function],
+        "resetStoreCallbacks": Array [],
+        "store": DataStore {
+          "cache": InMemoryCache {
+            "addTypename": true,
+            "cacheKeyRoot": KeyTrie {
+              "weakness": true,
+            },
+            "config": Object {
+              "addTypename": true,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "freezeResults": false,
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+              "executeSubSelectedArray": [Function],
+              "freezeResults": false,
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+        },
+        "typeDefs": undefined,
+        "version": "2.6.10",
+        "watchQuery": [Function],
+      }
+    }
+  >
+    <AppLayout />
+  </ApolloProvider>
+</CubeProvider>
+`;
